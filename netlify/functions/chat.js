@@ -108,6 +108,7 @@ exports.handler = async (event) => {
     const data = await res.json();
 
     if (!res.ok) {
+      console.error("Gemini API error:", res.status, JSON.stringify(data));
       return { statusCode: res.status, body: JSON.stringify({ error: data?.error?.message || "Upstream error" }) };
     }
 
@@ -119,6 +120,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({ reply: text }),
     };
   } catch (err) {
+    console.error("Function error:", err);
     return { statusCode: 500, body: JSON.stringify({ error: "Assistant is temporarily unavailable." }) };
   }
 };
