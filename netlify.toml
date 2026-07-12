@@ -10,3 +10,8 @@
   from = "/api/classify"
   to = "/.netlify/functions/classify"
   status = 200
+
+[[redirects]]
+  from = "/api/redflag"
+  to = "/.netlify/functions/redflag"
+  status = 200
