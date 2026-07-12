@@ -39,7 +39,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "Invalid request body" }) };
   }
 
-  const model = "gemini-2.5-flash";
+  const model = "gemini-3.5-flash"; // current GA model, replaces deprecated gemini-2.5-flash
 
   try {
     const res = await fetch(
