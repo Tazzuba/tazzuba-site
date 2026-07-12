@@ -89,6 +89,11 @@
   .tag-false{background:rgba(176,102,79,.12);color:var(--false);border:1px solid rgba(176,102,79,.3);}
   .branch-out{color:var(--text-secondary);}
   #gate-scenario{transition:opacity .25s ease;}
+  .gate-quote{font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;color:var(--text-secondary);margin-top:18px;min-height:1.4em;}
+  .gate-input-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  .gate-input-row input{flex:1;min-width:200px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:13px 14px;font-size:.85rem;}
+  .gate-input-row input:focus{outline:none;border-color:var(--gold-dim);}
+  .gate-input-row .btn{white-space:nowrap;}
   .gate-cycle{margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);cursor:pointer;background:none;border:none;padding:0;display:inline-flex;gap:8px;align-items:center;}
   .gate-cycle:hover{color:var(--gold-bright);}
 
@@ -124,6 +129,22 @@
   .voice p{color:var(--text-secondary);line-height:1.75;font-size:1rem;margin:0 0 18px;}
   .voice-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.25rem;color:var(--text-primary);border-left:2px solid var(--gold-dim);padding-left:20px;margin:28px 0;line-height:1.5;}
   .signature{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--gold-bright);margin-top:22px;}
+
+  .credentials{list-style:none;margin:22px 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .credentials li{font-size:.88rem;color:var(--text-secondary);padding-left:20px;position:relative;line-height:1.5;}
+  .credentials li::before{content:'';position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .eco-item{background:var(--bg-elev);padding:22px 20px;position:relative;}
+  a.eco-item:hover{background:var(--bg-elev-2);}
+  .eco-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:10px;}
+  .eco-tag-live{background:rgba(127,168,138,.12);color:var(--true);border:1px solid rgba(127,168,138,.3);}
+  .eco-tag-soon{background:rgba(155,150,140,.08);color:var(--text-muted);border:1px solid var(--border);}
+  .eco-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--text-primary);margin-bottom:4px;}
+  .eco-desc{font-size:.78rem;color:var(--text-muted);}
+  @media (max-width:860px){
+    .eco-grid{grid-template-columns:repeat(2,1fr);}
+  }
 
   /* NEWSLETTER */
   .cta-band{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:48px clamp(24px,5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
@@ -170,6 +191,7 @@
         <a href="https://store.tazzuba.com">Store</a>
         <a href="#framework">Framework</a>
         <a href="#services">Services</a>
+        <a href="#ecosystem">Ecosystem</a>
         <a href="#" class="nav-cta">Institute — Soon</a>
       </div>
       <button class="menu-btn mono">MENU</button>
@@ -196,14 +218,19 @@
         <div class="gate-flow" id="gate-scenario">
           <div class="node node-input" id="gate-input">A client cancels the deal at the final hour.</div>
           <span class="arrow">→</span>
-          <div class="node node-diamond">Is this within your control?</div>
+          <div class="node node-diamond" id="gate-diamond">Is this within your control?</div>
           <span class="arrow">→</span>
           <div class="branches">
-            <div class="branch"><span class="branch-tag tag-true">TRUE</span><span class="branch-out" id="gate-true">Allocate resources. Act.</span></div>
-            <div class="branch"><span class="branch-tag tag-false">FALSE</span><span class="branch-out" id="gate-false">Clear memory. Release.</span></div>
+            <div class="branch"><span class="branch-tag tag-true" id="gate-badge-true">TRUE</span><span class="branch-out" id="gate-true">Allocate resources. Act.</span></div>
+            <div class="branch"><span class="branch-tag tag-false" id="gate-badge-false">FALSE</span><span class="branch-out" id="gate-false">Clear memory. Release.</span></div>
           </div>
         </div>
-        <button class="gate-cycle mono" id="gate-btn">↻ RUN ANOTHER SCENARIO</button>
+        <div class="gate-quote" id="gate-quote"></div>
+        <div class="gate-input-row">
+          <input type="text" id="gate-user-input" class="mono" placeholder="Describe a challenge you're facing…" maxlength="140">
+          <button id="gate-process" class="btn btn-primary">Process →</button>
+        </div>
+        <button class="gate-cycle mono" id="gate-btn">↻ TRY AN EXAMPLE INSTEAD</button>
       </div>
     </div>
   </section>
@@ -320,14 +347,22 @@
   <section id="voice">
     <div class="wrap">
       <div class="section-head">
-        <h2>The Voice</h2>
+        <h2>The Architect</h2>
         <span class="section-tag">Founder</span>
       </div>
       <div class="voice">
         <div class="voice-mark"><span>D.</span></div>
         <div>
-          <p>TAZZUBA is written and built by <strong>Derrick Sekiziyivu</strong> — applying systems leadership, cognitive engineering, and hands-on AI agent development to the everyday problem of running a team, a business, or a life without burning out on things that were never yours to control.</p>
-          <p>The books come first. The institute, the tools, and the studio are built on top of the same core filter — nothing added that doesn't reduce friction somewhere real.</p>
+          <p>TAZZUBA is founded and written by <strong>Derrick Sekiziyivu</strong> — applying systems leadership, cognitive engineering, and hands-on AI agent development to the everyday problem of running a team, a business, or a life without burning out on things that were never yours to control.</p>
+          <p>The books come first. The services, the institute, and the tools are built on top of the same core filter — nothing added that doesn't reduce friction somewhere real.</p>
+          <ul class="credentials">
+            <li>Certified Digital Finance Practitioner — Tufts University, The Fletcher School</li>
+            <li>Certified Digital Cloud Leader — Google</li>
+            <li>AWS AI/ML Scholar — Amazon Web Services</li>
+            <li>Google 5-Day AI Agents Intensive Graduate — Google × Kaggle</li>
+            <li>Kaggle AI Contributor</li>
+            <li>Founder — TAZZUBA · Therrid Consultancy Inc.</li>
+          </ul>
           <div class="voice-quote">"Waste no more time arguing what a good man should be. Be one."</div>
           <div class="signature">— Marcus Aurelius, quoted at the close of every TAZZUBA workbook</div>
         </div>
@@ -335,15 +370,94 @@
     </div>
   </section>
 
+  <section id="ecosystem">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Ecosystem</h2>
+        <span class="section-tag">Full Infrastructure</span>
+      </div>
+      <div class="eco-grid">
+        <a href="https://store.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">store.tazzuba.com</div>
+          <div class="eco-desc">The book catalogue</div>
+        </a>
+        <a href="https://books.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">books.tazzuba.com</div>
+          <div class="eco-desc">Digital guides & workbooks</div>
+        </a>
+        <a href="https://support.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">support.tazzuba.com</div>
+          <div class="eco-desc">Help & support</div>
+        </a>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">merch.tazzuba.com</div>
+          <div class="eco-desc">Apparel & gear</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">blog.tazzuba.com</div>
+          <div class="eco-desc">Leadership & Stoicism writing</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">community.tazzuba.com</div>
+          <div class="eco-desc">The Leadership Room</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">podcast.tazzuba.com</div>
+          <div class="eco-desc">Audio content hub</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">tv.tazzuba.com</div>
+          <div class="eco-desc">Video & courses</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">institute.tazzuba.com</div>
+          <div class="eco-desc">Cohort programmes</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">insights.tazzuba.com</div>
+          <div class="eco-desc">Research & analysis</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">tools.tazzuba.com</div>
+          <div class="eco-desc">AI tools & automation</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">lab.tazzuba.com</div>
+          <div class="eco-desc">Experimental builds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="subscribe">
     <div class="wrap">
+      <div class="section-head">
+        <h2>The Leadership Room</h2>
+        <span class="section-tag">Community</span>
+      </div>
       <div class="cta-band">
         <div>
-          <h3>The Digital Stoic, on Substack</h3>
-          <p>Systems, agents, and Stoic practice — one dispatch at a time.</p>
+          <h3>Weekly notes on Stoic leadership and the HOE framework</h3>
+          <p>One email a week. No noise. Unsubscribe anytime.</p>
         </div>
-        <a href="#" class="btn btn-primary">Subscribe →</a>
+        <form id="community-form" style="display:flex;gap:10px;flex:1;min-width:280px;">
+          <input type="email" id="community-email" placeholder="you@email.com" required style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:12px 14px;font-size:.9rem;">
+          <button type="submit" class="btn btn-primary">Join →</button>
+        </form>
       </div>
+      <p id="community-status" style="margin:14px 0 0;font-size:.82rem;color:var(--text-muted);"></p>
     </div>
   </section>
 </main>
@@ -597,33 +711,103 @@
       }
     });
   }
+  const communityForm = document.getElementById('community-form');
+  if (communityForm) {
+    communityForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('community-status');
+      const email = document.getElementById('community-email').value;
+      status.textContent = 'Joining…';
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ 'form-name': 'tazzuba-leads', email: email, source: 'community-section' }).toString()
+        });
+        status.textContent = "You're in. Watch for the first note.";
+        communityForm.reset();
+      } catch (err) {
+        status.textContent = 'Something went wrong — try again in a moment.';
+      }
+    });
+  }
+
 })();
 </script>
 
 <script>
-  const scenarios = [
-    { input: "A client cancels the deal at the final hour.", t: "Allocate resources. Act.", f: "Clear memory. Release." },
-    { input: "A competitor undercuts your pricing overnight.", t: "Adjust strategy. Act.", f: "Note it. Release the panic." },
-    { input: "A teammate misreads your last message.", t: "Clarify directly. Act.", f: "Their reading isn't yours to control." },
-    { input: "The market shifts against your sector.", t: "Reposition what you build. Act.", f: "The shift itself. Release." },
-    { input: "A server outage takes the store down at launch.", t: "Fix the system. Act.", f: "The timing of it. Release." }
+  const examples = [
+    "A client cancels the deal at the final hour.",
+    "A competitor undercuts your pricing overnight.",
+    "A teammate misreads your last message.",
+    "The market shifts against your sector.",
+    "A server outage takes the store down at launch."
   ];
-  let idx = 0;
+  let exampleIdx = 0;
   const inputEl = document.getElementById('gate-input');
   const trueEl = document.getElementById('gate-true');
   const falseEl = document.getElementById('gate-false');
+  const quoteEl = document.getElementById('gate-quote');
+  const badgeTrue = document.getElementById('gate-badge-true');
+  const badgeFalse = document.getElementById('gate-badge-false');
   const wrapEl = document.getElementById('gate-scenario');
   const btn = document.getElementById('gate-btn');
+  const userInput = document.getElementById('gate-user-input');
+  const processBtn = document.getElementById('gate-process');
+
+  function setActive(classification) {
+    badgeTrue.style.opacity = classification === 'TRUE' ? '1' : '.35';
+    badgeFalse.style.opacity = classification === 'FALSE' ? '1' : '.35';
+  }
+
+  async function classify(text) {
+    if (!text || !text.trim()) return;
+    wrapEl.style.opacity = .4;
+    inputEl.textContent = text;
+    trueEl.textContent = '…';
+    falseEl.textContent = '…';
+    quoteEl.textContent = '';
+    processBtn.disabled = true;
+    processBtn.textContent = 'Processing…';
+    try {
+      const res = await fetch('/api/classify', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ challenge: text })
+      });
+      const data = await res.json();
+      wrapEl.style.opacity = 1;
+      if (!res.ok || data.error) {
+        trueEl.textContent = 'Unavailable right now';
+        falseEl.textContent = 'Try again shortly';
+        setActive(null);
+      } else {
+        trueEl.textContent = data.classification === 'TRUE' ? data.action : '—';
+        falseEl.textContent = data.classification === 'FALSE' ? data.action : '—';
+        setActive(data.classification);
+        quoteEl.textContent = data.quote ? '"' + data.quote + '"' : '';
+      }
+    } catch (err) {
+      wrapEl.style.opacity = 1;
+      trueEl.textContent = 'Unavailable right now';
+      falseEl.textContent = 'Try again shortly';
+    } finally {
+      processBtn.disabled = false;
+      processBtn.textContent = 'Process →';
+    }
+  }
+
+  if (processBtn) {
+    processBtn.addEventListener('click', () => classify(userInput.value));
+  }
+  if (userInput) {
+    userInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') classify(userInput.value); });
+  }
   if (btn) {
     btn.addEventListener('click', () => {
-      idx = (idx + 1) % scenarios.length;
-      wrapEl.style.opacity = 0;
-      setTimeout(() => {
-        inputEl.textContent = scenarios[idx].input;
-        trueEl.textContent = scenarios[idx].t;
-        falseEl.textContent = scenarios[idx].f;
-        wrapEl.style.opacity = 1;
-      }, 250);
+      exampleIdx = (exampleIdx + 1) % examples.length;
+      userInput.value = examples[exampleIdx];
+      classify(examples[exampleIdx]);
     });
   }
   const menuBtn = document.querySelector('.menu-btn');
