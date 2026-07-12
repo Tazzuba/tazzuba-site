@@ -89,7 +89,7 @@ exports.handler = async (event) => {
     parts: [{ text: m.content }],
   }));
 
-  const model = "gemini-2.5-flash"; // matches your existing paid Gemini tier
+  const model = "gemini-3.5-flash"; // current GA model, replaces deprecated gemini-2.5-flash
 
   try {
     const res = await fetch(
