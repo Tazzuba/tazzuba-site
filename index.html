@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAZZUBA — Human Operations Engineering Institute</title>
+<meta name="description" content="TAZZUBA applies Stoic logic and autonomous systems to leadership. Books, tools, and a framework for people who lead like engineers.">
+<link rel="canonical" href="https://tazzuba.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tazzuba.com/">
+<meta property="og:title" content="TAZZUBA — Human Operations Engineering Institute">
+<meta property="og:description" content="TAZZUBA applies Stoic logic and autonomous systems to leadership. Books, tools, and a framework for people who lead like engineers.">
+<meta property="og:site_name" content="TAZZUBA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TAZZUBA — Human Operations Engineering Institute">
+<meta name="twitter:description" content="TAZZUBA applies Stoic logic and autonomous systems to leadership. Books, tools, and a framework for people who lead like engineers.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "TAZZUBA",
+  "alternateName": "Therrid Consultancy Inc.",
+  "url": "https://tazzuba.com/",
+  "description": "Human Operations Engineering institute applying Algorithmic Stoicism to leadership, publishing, and AI consulting.",
+  "founder": {
+    "@type": "Person",
+    "name": "Derrick Sekiziyivu"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5307 Victoria Dr #1163",
+    "addressLocality": "Vancouver",
+    "addressRegion": "BC",
+    "postalCode": "V5P 3V6",
+    "addressCountry": "CA"
+  },
+  "email": "derrick@tazzuba.com",
+  "sameAs": []
+}
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090A;
+    --bg-elev:#101214;
+    --bg-elev-2:#16181A;
+    --border:#232527;
+    --border-soft:#1B1D1F;
+    --text-primary:#EDE9E1;
+    --text-secondary:#9B968C;
+    --text-muted:#5C5850;
+    --gold:#FF6B00;
+    --gold-bright:#FF8A3D;
+    --gold-dim:#A04000;
+    --true:#7FA88A;
+    --false:#B0664F;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Fraunces',serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  :focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* grain texture */
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.03;
+    background-image:repeating-linear-gradient(0deg,#fff 0px,transparent 1px,transparent 2px);}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(8,9,10,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logotype{font-family:'Fraunces',serif;font-weight:500;font-size:1.25rem;letter-spacing:.02em;}
+  .logotype span{color:var(--gold-bright);}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-bright);}
+  .nav-cta{border:1px solid var(--gold-dim);padding:9px 18px;border-radius:2px;color:var(--gold-bright)!important;}
+  .nav-cta:hover{background:var(--gold);color:#08090A!important;border-color:var(--gold);}
+  .menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text-primary);padding:8px 12px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.75rem;}
+
+  /* HERO */
+  .hero{padding:96px 0 72px;position:relative;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--gold-dim);}
+  h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.4rem,5.2vw,4.4rem);line-height:1.06;letter-spacing:-.01em;margin:0 0 26px;max-width:15ch;}
+  h1 em{font-style:italic;font-weight:300;color:var(--gold-bright);}
+  .lede{font-size:1.15rem;line-height:1.6;color:var(--text-secondary);max-width:52ch;margin:0 0 40px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:80px;}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;padding:14px 26px;border-radius:2px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+  .btn-primary{background:var(--gold);color:#08090A;}
+  .btn-primary:hover{background:var(--gold-bright);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--border);color:var(--text-secondary);}
+  .btn-ghost:hover{border-color:var(--gold-dim);color:var(--gold-bright);}
+
+  /* LOGIC GATE — signature element */
+  .gate{border:1px solid var(--border);background:var(--bg-elev);border-radius:6px;padding:36px clamp(20px,4vw,48px);position:relative;overflow:hidden;}
+  .gate-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .gate-label b{color:var(--text-secondary);font-weight:500;}
+  .gate-flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;}
+  .node{border:1px solid var(--border);background:var(--bg-elev-2);padding:16px 20px;border-radius:4px;font-size:.85rem;min-width:170px;text-align:center;position:relative;}
+  .node-input{color:var(--text-primary);}
+  .node-diamond{border-color:var(--gold-dim);color:var(--gold-bright);}
+  .arrow{color:var(--text-muted);font-size:1.1rem;padding:0 14px;flex-shrink:0;}
+  .branches{display:flex;flex-direction:column;gap:14px;flex-shrink:0;}
+  .branch{display:flex;align-items:center;gap:10px;font-size:.78rem;}
+  .branch-tag{font-weight:600;padding:3px 8px;border-radius:2px;font-size:.7rem;}
+  .tag-true{background:rgba(127,168,138,.12);color:var(--true);border:1px solid rgba(127,168,138,.3);}
+  .tag-false{background:rgba(176,102,79,.12);color:var(--false);border:1px solid rgba(176,102,79,.3);}
+  .branch-out{color:var(--text-secondary);}
+  #gate-scenario{transition:opacity .25s ease;}
+  .gate-quote{font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;color:var(--text-secondary);margin-top:18px;min-height:1.4em;}
+  .gate-input-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  .gate-input-row input{flex:1;min-width:200px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:13px 14px;font-size:.85rem;}
+  .gate-input-row input:focus{outline:none;border-color:var(--gold-dim);}
+  .gate-input-row .btn{white-space:nowrap;}
+  .gate-cycle{margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);cursor:pointer;background:none;border:none;padding:0;display:inline-flex;gap:8px;align-items:center;}
+  .gate-cycle:hover{color:var(--gold-bright);}
+
+  /* SECTION shared */
+  section{padding:88px 0;border-top:1px solid var(--border-soft);}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:52px;flex-wrap:wrap;}
+  h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.7rem,3vw,2.3rem);margin:0;}
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
+
+  /* FRAMEWORK */
+  .framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .fw-card{background:var(--bg-elev);padding:40px;}
+  .fw-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.4rem;margin:0 0 16px;color:var(--gold-bright);}
+  .fw-card p{color:var(--text-secondary);line-height:1.7;font-size:.98rem;margin:0 0 14px;}
+  .fw-card p:last-child{margin-bottom:0;}
+
+  /* WINGS */
+  .wings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .wing{background:var(--bg-elev);padding:32px 28px;transition:background .2s;position:relative;}
+  .wing.linkable:hover{background:var(--bg-elev-2);}
+  .wing-status{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;position:absolute;top:28px;right:28px;}
+  .status-live{background:rgba(127,168,138,.12);color:var(--true);border:1px solid rgba(127,168,138,.3);}
+  .status-soon{background:rgba(155,150,140,.08);color:var(--text-muted);border:1px solid var(--border);}
+  .wing h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin:0 0 10px;padding-right:70px;}
+  .wing p{color:var(--text-secondary);font-size:.9rem;line-height:1.6;margin:0 0 20px;}
+  .wing-link{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold-bright);display:inline-flex;align-items:center;gap:6px;}
+  .wing-link.disabled{color:var(--text-muted);}
+
+  /* VOICE */
+  .voice{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start;}
+  .voice-mark{width:100%;aspect-ratio:1;border:1px solid var(--border);border-radius:6px;background:linear-gradient(160deg,var(--bg-elev),var(--bg-elev-2));display:flex;align-items:center;justify-content:center;}
+  .voice-mark span{font-family:'Fraunces',serif;font-size:3.6rem;color:var(--gold-dim);}
+  .voice p{color:var(--text-secondary);line-height:1.75;font-size:1rem;margin:0 0 18px;}
+  .voice-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.25rem;color:var(--text-primary);border-left:2px solid var(--gold-dim);padding-left:20px;margin:28px 0;line-height:1.5;}
+  .signature{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--gold-bright);margin-top:22px;}
+
+  .credentials{list-style:none;margin:22px 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .credentials li{font-size:.88rem;color:var(--text-secondary);padding-left:20px;position:relative;line-height:1.5;}
+  .credentials li::before{content:'';position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .eco-item{background:var(--bg-elev);padding:22px 20px;position:relative;}
+  a.eco-item:hover{background:var(--bg-elev-2);}
+  .eco-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:10px;}
+  .eco-tag-live{background:rgba(127,168,138,.12);color:var(--true);border:1px solid rgba(127,168,138,.3);}
+  .eco-tag-soon{background:rgba(155,150,140,.08);color:var(--text-muted);border:1px solid var(--border);}
+  .eco-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--text-primary);margin-bottom:4px;}
+  .eco-desc{font-size:.78rem;color:var(--text-muted);}
+  @media (max-width:860px){
+    .eco-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* NEWSLETTER */
+  .cta-band{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:48px clamp(24px,5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+  .cta-band h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.6rem;margin:0 0 8px;max-width:24ch;}
+  .cta-band p{color:var(--text-secondary);margin:0;font-size:.92rem;}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border-soft);padding:64px 0 40px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px;}
+  .footer-col h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 18px;}
+  .footer-col a{display:block;color:var(--text-secondary);font-size:.88rem;margin-bottom:12px;transition:color .2s;}
+  .footer-col a:hover{color:var(--gold-bright);}
+  .footer-brand p{color:var(--text-muted);font-size:.85rem;line-height:1.6;max-width:32ch;margin-top:14px;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--border-soft);flex-wrap:wrap;gap:12px;}
+  .footer-bottom p{margin:0;color:var(--text-muted);font-size:.78rem;font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width:860px){
+    .menu-btn{display:block;}
+    .nav-links{display:none;}
+    .framework-grid{grid-template-columns:1fr;}
+    .wings-grid{grid-template-columns:1fr;}
+    .voice{grid-template-columns:1fr;}
+    .voice-mark{max-width:180px;aspect-ratio:1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .gate-flow{flex-direction:column;align-items:stretch;}
+    .arrow{transform:rotate(90deg);align-self:center;padding:8px 0;}
+    .branches{flex-direction:row;flex-wrap:wrap;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logotype">TAZZUBA<span>.</span></a>
+      <div class="nav-links">
+        <a href="https://books.tazzuba.com">Books</a>
+        <a href="https://store.tazzuba.com">Store</a>
+        <a href="#framework">Framework</a>
+        <a href="#services">Services</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#" class="nav-cta">Institute — Soon</a>
+      </div>
+      <button class="menu-btn mono">MENU</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;padding-top:96px;">
+    <div class="wrap">
+      <div class="eyebrow">Human Operations Engineering Institute</div>
+      <h1>The operating system for people who lead like <em>engineers.</em></h1>
+      <p class="lede">TAZZUBA applies Stoic logic and autonomous systems to leadership — separating what's yours to control from what isn't, so nothing gets processed twice.</p>
+      <div class="hero-actions">
+        <a href="https://books.tazzuba.com" class="btn btn-primary">Read the Books →</a>
+        <a href="https://store.tazzuba.com" class="btn btn-ghost">Visit the Store</a>
+      </div>
+
+      <div class="gate" role="group" aria-label="Dichotomy of control demonstration">
+        <div class="gate-label">
+          <span><b>Module —</b> The Dichotomy of Control</span>
+          <span>Algorithmic Stoicism · Core Filter</span>
+        </div>
+        <div class="gate-flow" id="gate-scenario">
+          <div class="node node-input" id="gate-input">A client cancels the deal at the final hour.</div>
+          <span class="arrow">→</span>
+          <div class="node node-diamond" id="gate-diamond">Is this within your control?</div>
+          <span class="arrow">→</span>
+          <div class="branches">
+            <div class="branch"><span class="branch-tag tag-true" id="gate-badge-true">TRUE</span><span class="branch-out" id="gate-true">Allocate resources. Act.</span></div>
+            <div class="branch"><span class="branch-tag tag-false" id="gate-badge-false">FALSE</span><span class="branch-out" id="gate-false">Clear memory. Release.</span></div>
+          </div>
+        </div>
+        <div class="gate-quote" id="gate-quote"></div>
+        <div class="gate-input-row">
+          <input type="text" id="gate-user-input" class="mono" placeholder="Describe a challenge you're facing…" maxlength="140">
+          <button id="gate-process" class="btn btn-primary">Process →</button>
+        </div>
+        <button class="gate-cycle mono" id="gate-btn">↻ TRY AN EXAMPLE INSTEAD</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Framework</h2>
+        <span class="section-tag">Two Layers, One System</span>
+      </div>
+      <div class="framework-grid">
+        <div class="fw-card">
+          <h3>Algorithmic Stoicism</h3>
+          <p>Classical Stoic thinking — Epictetus, Marcus Aurelius, Seneca — rebuilt as explicit if/then logic for the mind under pressure.</p>
+          <p>Every incoming event runs through one filter: is it within my control? True, and it gets your attention and effort. False, and it gets released before it costs you anything. No event gets processed twice.</p>
+          <a href="/algorithmic-stoicism.html" class="wing-link">Read the full framework →</a>
+        </div>
+        <div class="fw-card">
+          <h3>Human Operations Engineering</h3>
+          <p>If Algorithmic Stoicism governs the mind, HOE governs what's around it — the workflows, the teams, the systems a leader is responsible for.</p>
+          <p>It treats routine execution as something to design once and automate, often with AI agents handling the procedural work, so your attention stays on decisions only you can make.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="wings">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Wings</h2>
+        <span class="section-tag">The Ecosystem</span>
+      </div>
+      <div class="wings-grid">
+        <a href="https://books.tazzuba.com" class="wing linkable">
+          <span class="wing-status status-live">Live</span>
+          <h3>Books</h3>
+          <p>The HOS™ series and tactical guides — Algorithmic Stoicism, The Focus Code, Human Algorithms, The Systems Leader, and the Stoic Relationships workbook.</p>
+          <span class="wing-link">books.tazzuba.com →</span>
+        </a>
+        <a href="https://store.tazzuba.com" class="wing linkable">
+          <span class="wing-status status-live">Live</span>
+          <h3>Store</h3>
+          <p>The full TAZZUBA product line — digital and physical goods built around the HOS framework.</p>
+          <span class="wing-link">store.tazzuba.com →</span>
+        </a>
+        <div class="wing">
+          <span class="wing-status status-soon">Arriving</span>
+          <h3>Merch</h3>
+          <p>Apparel and gear, moving to Fourthwall. Link goes live once the storefront is connected.</p>
+          <span class="wing-link disabled">merch.tazzuba.com</span>
+        </div>
+        <div class="wing">
+          <span class="wing-status status-soon">Month 3</span>
+          <h3>Institute</h3>
+          <p>Cohort-based courses applying the HOS framework directly to your team and workflows.</p>
+          <span class="wing-link disabled">institute.tazzuba.com</span>
+        </div>
+        <div class="wing">
+          <span class="wing-status status-soon">In Progress</span>
+          <h3>Journal</h3>
+          <p>Long-form writing on leadership, systems, and Stoic practice — the thinking behind the books.</p>
+          <span class="wing-link disabled">blog.tazzuba.com</span>
+        </div>
+        <div class="wing">
+          <span class="wing-status status-soon">In Progress</span>
+          <h3>Studio</h3>
+          <p>Video and audio — the same frameworks, in conversation. Podcast and channel launching together.</p>
+          <span class="wing-link disabled">tv.tazzuba.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Work With Us</h2>
+        <span class="section-tag">Direct Engagements</span>
+      </div>
+      <div class="framework-grid" style="margin-bottom:40px;">
+        <div class="fw-card">
+          <h3>Premium Ghostwriting</h3>
+          <p>Books, LinkedIn presence, and executive thought-leadership content written in your voice, built on the same systems-thinking used across the HOS series.</p>
+          <p>For founders and executives who have the expertise but not the hours to write it themselves.</p>
+        </div>
+        <div class="fw-card">
+          <h3>AI Consulting</h3>
+          <p>Hands-on implementation of the Human Operations Engineering framework inside your business — mapping workflows, then deploying AI agents to run the procedural parts of them.</p>
+          <p>For teams ready to move from "we should automate this" to it actually running.</p>
+        </div>
+      </div>
+
+      <div class="cta-band" id="inquiry-band">
+        <div style="flex:1;min-width:240px;">
+          <h3>Start an inquiry</h3>
+          <p>Tell us which service and what you're working on — we'll follow up directly.</p>
+        </div>
+        <form id="tz-inquiry-form" style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:260px;">
+          <input type="text" id="inq-name" placeholder="Name" required style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:11px 12px;font-size:.9rem;">
+          <input type="email" id="inq-email" placeholder="Email" required style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:11px 12px;font-size:.9rem;">
+          <select id="inq-service" required style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:11px 12px;font-size:.9rem;">
+            <option value="">Which service?</option>
+            <option value="Ghostwriting">Premium Ghostwriting</option>
+            <option value="AI Consulting">AI Consulting</option>
+            <option value="Both">Both / Not sure yet</option>
+          </select>
+          <textarea id="inq-message" placeholder="A few lines about what you need" rows="3" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:11px 12px;font-size:.9rem;font-family:inherit;resize:vertical;"></textarea>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Send Inquiry →</button>
+          <p id="inq-status" style="margin:0;font-size:.8rem;color:var(--text-muted);"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="voice">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Architect</h2>
+        <span class="section-tag">Founder</span>
+      </div>
+      <div class="voice">
+        <div class="voice-mark"><span>D.</span></div>
+        <div>
+          <p>TAZZUBA is founded and written by <strong>Derrick Sekiziyivu</strong> — applying systems leadership, cognitive engineering, and hands-on AI agent development to the everyday problem of running a team, a business, or a life without burning out on things that were never yours to control.</p>
+          <p>The books come first. The services, the institute, and the tools are built on top of the same core filter — nothing added that doesn't reduce friction somewhere real.</p>
+          <ul class="credentials">
+            <li>Certified Digital Finance Practitioner — Tufts University, The Fletcher School</li>
+            <li>Certified Digital Cloud Leader — Google</li>
+            <li>AWS AI/ML Scholar — Amazon Web Services</li>
+            <li>Google 5-Day AI Agents Intensive Graduate — Google × Kaggle</li>
+            <li>Kaggle AI Contributor</li>
+            <li>Founder — TAZZUBA · Therrid Consultancy Inc.</li>
+          </ul>
+          <div class="voice-quote">"Waste no more time arguing what a good man should be. Be one."</div>
+          <div class="signature">— Marcus Aurelius, quoted at the close of every TAZZUBA workbook</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosystem">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Ecosystem</h2>
+        <span class="section-tag">Full Infrastructure</span>
+      </div>
+      <div class="eco-grid">
+        <a href="https://store.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">store.tazzuba.com</div>
+          <div class="eco-desc">The book catalogue</div>
+        </a>
+        <a href="https://books.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">books.tazzuba.com</div>
+          <div class="eco-desc">Digital guides & workbooks</div>
+        </a>
+        <a href="https://support.tazzuba.com" class="eco-item eco-live" target="_blank" rel="noopener">
+          <span class="eco-tag eco-tag-live">Live</span>
+          <div class="eco-name">support.tazzuba.com</div>
+          <div class="eco-desc">Help & support</div>
+        </a>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">merch.tazzuba.com</div>
+          <div class="eco-desc">Apparel & gear</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">blog.tazzuba.com</div>
+          <div class="eco-desc">Leadership & Stoicism writing</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">community.tazzuba.com</div>
+          <div class="eco-desc">The Leadership Room</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">podcast.tazzuba.com</div>
+          <div class="eco-desc">Audio content hub</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">tv.tazzuba.com</div>
+          <div class="eco-desc">Video & courses</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">institute.tazzuba.com</div>
+          <div class="eco-desc">Cohort programmes</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">insights.tazzuba.com</div>
+          <div class="eco-desc">Research & analysis</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">tools.tazzuba.com</div>
+          <div class="eco-desc">AI tools & automation</div>
+        </div>
+        <div class="eco-item">
+          <span class="eco-tag eco-tag-soon">Soon</span>
+          <div class="eco-name">lab.tazzuba.com</div>
+          <div class="eco-desc">Experimental builds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="subscribe">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Leadership Room</h2>
+        <span class="section-tag">Community</span>
+      </div>
+      <div class="cta-band">
+        <div>
+          <h3>Weekly notes on Stoic leadership and the HOE framework</h3>
+          <p>One email a week. No noise. Unsubscribe anytime.</p>
+        </div>
+        <form id="community-form" style="display:flex;gap:10px;flex:1;min-width:280px;">
+          <input type="email" id="community-email" placeholder="you@email.com" required style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:12px 14px;font-size:.9rem;">
+          <button type="submit" class="btn btn-primary">Join →</button>
+        </form>
+      </div>
+      <p id="community-status" style="margin:14px 0 0;font-size:.82rem;color:var(--text-muted);"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="logotype">TAZZUBA<span>.</span></div>
+        <p>Human Operations Engineering Institute. Stoic logic, engineered systems, and the books that connect them.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ecosystem</h4>
+        <a href="https://books.tazzuba.com">Books</a>
+        <a href="https://store.tazzuba.com">Store</a>
+        <a href="#">Merch (soon)</a>
+        <a href="#">Institute (soon)</a>
+      </div>
+      <div class="footer-col">
+        <h4>Read</h4>
+        <a href="#">Journal (soon)</a>
+        <a href="#">Studio (soon)</a>
+        <a href="#">The Digital Stoic ↗</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">LinkedIn ↗</a>
+        <a href="#">YouTube ↗</a>
+        <a href="mailto:derrick@tazzuba.com">derrick@tazzuba.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 TAZZUBA. dum spiro, spero.</p>
+      <p>A registered trade name of Therrid Consultancy Inc. (BC1349138) · Reg. No. FM1097957</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Netlify Forms needs a static form present at build time to detect this form. -->
+<form name="tazzuba-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" />
+  <input type="email" name="email" />
+  <input type="text" name="source" />
+</form>
+
+<form name="tazzuba-inquiries" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="service" />
+  <textarea name="message"></textarea>
+</form>
+
+<div id="tz-widget">
+  <button id="tz-launcher" aria-label="Open TAZZUBA assistant" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span class="tz-launcher-text">Ask TAZZUBA</span>
+  </button>
+
+  <div id="tz-panel" hidden>
+    <div class="tz-head">
+      <div>
+        <div class="tz-head-title">TAZZUBA Assistant</div>
+        <div class="tz-head-sub">Books · Institute · Store</div>
+      </div>
+      <button id="tz-close" aria-label="Close assistant">&times;</button>
+    </div>
+
+    <div class="tz-messages" id="tz-messages">
+      <div class="tz-msg tz-msg-bot">
+        Hi — I can help you find the right book, explain the HOS framework, or point you to the right wing of the site. What are you working on?
+      </div>
+      <div class="tz-chips" id="tz-chips">
+        <button class="tz-chip" data-q="Which book should I start with?">Which book should I start with?</button>
+        <button class="tz-chip" data-q="What is Algorithmic Stoicism?">What is Algorithmic Stoicism?</button>
+        <button class="tz-chip" data-q="Tell me about the Institute">Tell me about the Institute</button>
+      </div>
+    </div>
+
+    <div class="tz-lead" id="tz-lead" hidden>
+      <p>Want updates when the Institute and new books launch?</p>
+      <form id="tz-lead-form">
+        <input type="email" id="tz-lead-email" placeholder="you@email.com" required />
+        <button type="submit">Save</button>
+      </form>
+      <button class="tz-lead-dismiss" id="tz-lead-dismiss">Not now</button>
+    </div>
+
+    <form id="tz-input-row">
+      <input type="text" id="tz-input" placeholder="Type a question…" autocomplete="off" />
+      <button type="submit" aria-label="Send">↑</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  #tz-widget{position:fixed;bottom:24px;right:24px;z-index:200;font-family:'Inter',sans-serif;}
+  #tz-launcher{display:flex;align-items:center;gap:10px;background:var(--gold);color:#08090A;border:none;padding:14px 20px;border-radius:30px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.03em;cursor:pointer;box-shadow:0 6px 24px rgba(255,107,0,.35);transition:transform .2s;}
+  #tz-launcher:hover{transform:translateY(-2px);}
+  #tz-panel{position:fixed;bottom:24px;right:24px;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 48px));background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .tz-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--border-soft);background:var(--bg-elev-2);}
+  .tz-head-title{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--text-primary);}
+  .tz-head-sub{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-muted);margin-top:2px;}
+  #tz-close{background:none;border:none;color:var(--text-secondary);font-size:1.4rem;cursor:pointer;line-height:1;padding:4px;}
+  #tz-close:hover{color:var(--gold-bright);}
+  .tz-messages{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;}
+  .tz-msg{font-size:.88rem;line-height:1.55;padding:10px 14px;border-radius:10px;max-width:88%;}
+  .tz-msg-bot{background:var(--bg-elev-2);color:var(--text-primary);align-self:flex-start;border:1px solid var(--border-soft);}
+  .tz-msg-user{background:var(--gold);color:#08090A;align-self:flex-end;}
+  .tz-msg-typing{color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:.75rem;}
+  .tz-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .tz-chip{background:none;border:1px solid var(--border);color:var(--text-secondary);font-size:.75rem;padding:7px 12px;border-radius:20px;cursor:pointer;font-family:'Inter',sans-serif;}
+  .tz-chip:hover{border-color:var(--gold-dim);color:var(--gold-bright);}
+  .tz-lead{padding:14px 18px;border-top:1px solid var(--border-soft);background:var(--bg-elev-2);}
+  .tz-lead p{margin:0 0 10px;font-size:.82rem;color:var(--text-secondary);}
+  #tz-lead-form{display:flex;gap:8px;}
+  #tz-lead-email{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);padding:9px 10px;font-size:.85rem;}
+  #tz-lead-form button{background:var(--gold);color:#08090A;border:none;padding:9px 14px;border-radius:6px;font-size:.8rem;cursor:pointer;font-weight:600;}
+  .tz-lead-dismiss{background:none;border:none;color:var(--text-muted);font-size:.72rem;margin-top:8px;cursor:pointer;padding:0;}
+  .tz-lead-dismiss:hover{color:var(--text-secondary);}
+  #tz-input-row{display:flex;border-top:1px solid var(--border-soft);padding:12px;gap:8px;}
+  #tz-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);padding:11px 12px;font-size:.88rem;}
+  #tz-input:focus{outline:none;border-color:var(--gold-dim);}
+  #tz-input-row button{background:var(--gold);color:#08090A;border:none;width:40px;border-radius:8px;font-size:1rem;cursor:pointer;font-weight:700;}
+  @media (max-width:480px){
+    #tz-panel{right:16px;bottom:16px;}
+    #tz-launcher{right:16px;bottom:16px;}
+  }
+</style>
+
+<script>
+(function(){
+  const launcher = document.getElementById('tz-launcher');
+  const panel = document.getElementById('tz-panel');
+  const closeBtn = document.getElementById('tz-close');
+  const messagesEl = document.getElementById('tz-messages');
+  const chipsEl = document.getElementById('tz-chips');
+  const inputRow = document.getElementById('tz-input-row');
+  const input = document.getElementById('tz-input');
+  const leadBox = document.getElementById('tz-lead');
+  const leadForm = document.getElementById('tz-lead-form');
+  const leadDismiss = document.getElementById('tz-lead-dismiss');
+
+  let history = [];
+  let userTurns = 0;
+  let leadShown = false;
+  let leadSaved = false;
+
+  function openPanel(){ panel.hidden = false; launcher.setAttribute('aria-expanded','true'); launcher.style.display='none'; input.focus(); }
+  function closePanel(){ panel.hidden = true; launcher.setAttribute('aria-expanded','false'); launcher.style.display='flex'; }
+  launcher.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+
+  function addMessage(text, role){
+    const div = document.createElement('div');
+    div.className = 'tz-msg ' + (role === 'user' ? 'tz-msg-user' : 'tz-msg-bot');
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function maybeShowLead(){
+    if (!leadShown && !leadSaved && userTurns >= 2) {
+      leadShown = true;
+      leadBox.hidden = false;
+    }
+  }
+
+  async function send(text){
+    if (!text.trim()) return;
+    addMessage(text, 'user');
+    history.push({ role: 'user', content: text });
+    userTurns++;
+    input.value = '';
+    if (chipsEl) chipsEl.remove();
+
+    const typing = document.createElement('div');
+    typing.className = 'tz-msg tz-msg-bot tz-msg-typing';
+    typing.textContent = 'Thinking…';
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      const data = await res.json();
+      typing.remove();
+      if (!res.ok || data.error) {
+        addMessage("Sorry — the assistant isn't reachable right now. Try books.tazzuba.com or store.tazzuba.com directly.", 'bot');
+        return;
+      }
+      addMessage(data.reply, 'bot');
+      history.push({ role: 'assistant', content: data.reply });
+      maybeShowLead();
+    } catch (err) {
+      typing.remove();
+      addMessage("Sorry — something went wrong reaching the assistant.", 'bot');
+    }
+  }
+
+  inputRow.addEventListener('submit', (e) => { e.preventDefault(); send(input.value); });
+  document.querySelectorAll('.tz-chip').forEach(btn => {
+    btn.addEventListener('click', () => send(btn.dataset.q));
+  });
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('tz-lead-email').value;
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'tazzuba-leads', email: email, source: 'chat-widget' }).toString()
+      });
+      leadSaved = true;
+      leadBox.innerHTML = '<p>Saved — thank you.</p>';
+      setTimeout(() => { leadBox.hidden = true; }, 2000);
+    } catch (err) {
+      leadBox.innerHTML = '<p>Something went wrong saving that — try the Substack link in the footer instead.</p>';
+    }
+  });
+  leadDismiss.addEventListener('click', () => { leadBox.hidden = true; });
+
+  const inquiryForm = document.getElementById('tz-inquiry-form');
+  if (inquiryForm) {
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('inq-status');
+      const payload = {
+        'form-name': 'tazzuba-inquiries',
+        name: document.getElementById('inq-name').value,
+        email: document.getElementById('inq-email').value,
+        service: document.getElementById('inq-service').value,
+        message: document.getElementById('inq-message').value
+      };
+      status.textContent = 'Sending…';
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(payload).toString()
+        });
+        status.textContent = "Sent — we'll follow up by email.";
+        inquiryForm.reset();
+      } catch (err) {
+        status.textContent = 'Something went wrong — email derrick@tazzuba.com directly instead.';
+      }
+    });
+  }
+  const communityForm = document.getElementById('community-form');
+  if (communityForm) {
+    communityForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('community-status');
+      const email = document.getElementById('community-email').value;
+      status.textContent = 'Joining…';
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ 'form-name': 'tazzuba-leads', email: email, source: 'community-section' }).toString()
+        });
+        status.textContent = "You're in. Watch for the first note.";
+        communityForm.reset();
+      } catch (err) {
+        status.textContent = 'Something went wrong — try again in a moment.';
+      }
+    });
+  }
+
+})();
+</script>
+
+<script>
+  const examples = [
+    "A client cancels the deal at the final hour.",
+    "A competitor undercuts your pricing overnight.",
+    "A teammate misreads your last message.",
+    "The market shifts against your sector.",
+    "A server outage takes the store down at launch."
+  ];
+  let exampleIdx = 0;
+  const inputEl = document.getElementById('gate-input');
+  const trueEl = document.getElementById('gate-true');
+  const falseEl = document.getElementById('gate-false');
+  const quoteEl = document.getElementById('gate-quote');
+  const badgeTrue = document.getElementById('gate-badge-true');
+  const badgeFalse = document.getElementById('gate-badge-false');
+  const wrapEl = document.getElementById('gate-scenario');
+  const btn = document.getElementById('gate-btn');
+  const userInput = document.getElementById('gate-user-input');
+  const processBtn = document.getElementById('gate-process');
+
+  function setActive(classification) {
+    badgeTrue.style.opacity = classification === 'TRUE' ? '1' : '.35';
+    badgeFalse.style.opacity = classification === 'FALSE' ? '1' : '.35';
+  }
+
+  async function classify(text) {
+    if (!text || !text.trim()) return;
+    wrapEl.style.opacity = .4;
+    inputEl.textContent = text;
+    trueEl.textContent = '…';
+    falseEl.textContent = '…';
+    quoteEl.textContent = '';
+    processBtn.disabled = true;
+    processBtn.textContent = 'Processing…';
+    try {
+      const res = await fetch('/api/classify', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ challenge: text })
+      });
+      const data = await res.json();
+      wrapEl.style.opacity = 1;
+      if (!res.ok || data.error) {
+        trueEl.textContent = 'Unavailable right now';
+        falseEl.textContent = 'Try again shortly';
+        setActive(null);
+      } else {
+        trueEl.textContent = data.classification === 'TRUE' ? data.action : '—';
+        falseEl.textContent = data.classification === 'FALSE' ? data.action : '—';
+        setActive(data.classification);
+        quoteEl.textContent = data.quote ? '"' + data.quote + '"' : '';
+      }
+    } catch (err) {
+      wrapEl.style.opacity = 1;
+      trueEl.textContent = 'Unavailable right now';
+      falseEl.textContent = 'Try again shortly';
+    } finally {
+      processBtn.disabled = false;
+      processBtn.textContent = 'Process →';
+    }
+  }
+
+  if (processBtn) {
+    processBtn.addEventListener('click', () => classify(userInput.value));
+  }
+  if (userInput) {
+    userInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') classify(userInput.value); });
+  }
+  if (btn) {
+    btn.addEventListener('click', () => {
+      exampleIdx = (exampleIdx + 1) % examples.length;
+      userInput.value = examples[exampleIdx];
+      classify(examples[exampleIdx]);
+    });
+  }
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.display = open ? 'none' : 'flex';
+      navLinks.style.cssText += open ? '' : 'position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#0A0B0C;padding:20px 28px;border-bottom:1px solid #232527;gap:18px;';
+    });
+  }
+</script>
+</body>
+</html>
