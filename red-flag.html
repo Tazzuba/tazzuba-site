@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is It a Red Flag? — Stoic Framework Verdict | TAZZUBA</title>
+<meta name="description" content="Describe the behaviour. Get an instant Stoic-framework verdict on whether it's a red flag — free tool from TAZZUBA's Stoic Relationships series.">
+<link rel="canonical" href="https://tazzuba.com/red-flag.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tazzuba.com/red-flag.html">
+<meta property="og:title" content="Is It a Red Flag? — Stoic Framework Verdict">
+<meta property="og:description" content="Describe the behaviour. Get an instant Stoic-framework verdict — free tool from TAZZUBA.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#1C1A17; --text-secondary:#6B665D; --text-muted:#A39D91;
+    --ember:#FF6B00; --ember-dim:#A04000; --border:#E7E2D9; --dark:#242220;
+    --true:#7FA88A; --false:#B0664F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;padding:56px 24px 40px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;}
+  .eyebrow{text-align:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:18px;}
+  h1{text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(2.6rem,8vw,3.6rem);color:var(--ember);margin-bottom:14px;}
+  .sub{text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:48px;}
+  label{display:block;font-size:.85rem;color:var(--text-muted);margin-bottom:10px;}
+  textarea{width:100%;min-height:150px;background:var(--dark);color:#fff;border:none;border-radius:10px;padding:22px;font-family:'Inter',sans-serif;font-size:1.15rem;font-style:italic;resize:vertical;line-height:1.5;}
+  textarea::placeholder{color:rgba(255,255,255,.55);}
+  textarea:focus{outline:2px solid var(--ember);}
+  .submit-row{display:flex;justify-content:center;margin-top:22px;}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.04em;background:var(--ember);color:#fff;border:none;padding:15px 32px;border-radius:8px;cursor:pointer;transition:background .2s;}
+  .btn:hover{background:var(--ember-dim);}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .result{margin-top:40px;padding:28px 30px;border-radius:12px;border:1px solid var(--border);display:none;}
+  .result.show{display:block;}
+  .result-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+  .badge-flag{background:rgba(176,102,79,.12);color:var(--false);border:1px solid rgba(176,102,79,.35);}
+  .badge-noflag{background:rgba(127,168,138,.12);color:var(--true);border:1px solid rgba(127,168,138,.35);}
+  .result p{font-size:1.02rem;line-height:1.65;color:var(--ink);margin-bottom:14px;}
+  .result p:last-child{margin-bottom:0;}
+  .result .quote{font-family:'Fraunces',serif;font-style:italic;color:var(--text-secondary);font-size:.98rem;border-left:2px solid var(--ember);padding-left:16px;margin-top:18px;}
+  footer{max-width:640px;margin:56px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--border);padding-top:24px;}
+  .wordmark{font-family:'Fraunces',serif;font-size:1rem;color:var(--text-muted);line-height:1.2;}
+  .cta{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--ember);text-decoration:none;}
+  .cta:hover{color:var(--ember-dim);}
+  @media(max-width:480px){ footer{flex-direction:column;align-items:flex-start;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Stoic Relationships · TAZZUBA</div>
+  <h1>red flag?</h1>
+  <p class="sub">Describe the behaviour. Get a Stoic-framework verdict.</p>
+
+  <label for="behaviour">Describe what happened or what they did</label>
+  <textarea id="behaviour" placeholder="e.g. They texted their ex secretly and lied about it when I asked…" maxlength="400"></textarea>
+
+  <div class="submit-row">
+    <button id="submit-btn" class="btn">Get my verdict →</button>
+  </div>
+
+  <div class="result" id="result">
+    <span class="result-badge" id="result-badge">—</span>
+    <p id="result-text"></p>
+    <div class="quote" id="result-quote"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wordmark">TAZZUBA</div>
+  <a href="https://books.tazzuba.com?utm_source=redflag-tool&utm_medium=cta" class="cta">Get the Red Flags Guide — $8 →</a>
+</footer>
+
+<script>
+(function(){
+  const textarea = document.getElementById('behaviour');
+  const btn = document.getElementById('submit-btn');
+  const result = document.getElementById('result');
+  const badge = document.getElementById('result-badge');
+  const text = document.getElementById('result-text');
+  const quote = document.getElementById('result-quote');
+
+  async function getVerdict(){
+    const behaviour = textarea.value.trim();
+    if (!behaviour) { textarea.focus(); return; }
+    btn.disabled = true;
+    btn.textContent = 'Reading the situation…';
+    result.classList.remove('show');
+    try {
+      const res = await fetch('/api/redflag', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ behaviour })
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        badge.textContent = 'Unavailable';
+        badge.className = 'result-badge badge-flag';
+        text.textContent = "Couldn't process that right now — try again in a moment.";
+        quote.textContent = '';
+      } else {
+        badge.textContent = data.isRedFlag ? 'Red Flag' : 'Not a Red Flag';
+        badge.className = 'result-badge ' + (data.isRedFlag ? 'badge-flag' : 'badge-noflag');
+        text.textContent = data.verdict || '';
+        quote.textContent = data.quote ? '"' + data.quote + '"' : '';
+      }
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (err) {
+      badge.textContent = 'Unavailable';
+      badge.className = 'result-badge badge-flag';
+      text.textContent = "Couldn't reach the verdict engine — try again shortly.";
+      quote.textContent = '';
+      result.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Get my verdict →';
+    }
+  }
+
+  btn.addEventListener('click', getVerdict);
+  textarea.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) getVerdict();
+  });
+})();
+</script>
+</body>
+</html>
